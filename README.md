@@ -16,6 +16,7 @@ Python 3.8:
   - Xlsxwriter
   - Pandas
   - Xlrd
+  - Openpyxl
 
 ## Installation
 ```
