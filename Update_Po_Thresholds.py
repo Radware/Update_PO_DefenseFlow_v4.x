@@ -33,6 +33,7 @@ class Vision:
                
         if res.status_code == 401:
             print("====== Bad Login Credentials ======")
+            exit(1)
         else:
             login_reposne = res.json()
             self.token = Cookie_format(login_reposne["jsessionid"])
@@ -82,11 +83,9 @@ def update_list_po():
     po_db_list = excel_data_df.to_dict(orient='record')
     po_dict_params = {}
     for index in range(len(po_db_list)):
-        for key, value in po_db_list[index].items():
-            po_dict_params.update({key : value})
-        vision_obj.Update_PO_API(po_dict_params)
-        print(f'Updating Po:{po_dict_params["po_name"]}')
-
+        vision_obj.Update_PO_API(po_db_list[index])
+        print(f'Updating Po:{po_db_list["po_name"]}')
+        
 def create_po_file():
     vision_obj = Vision(Vision_IP, Vision_User, Vision_Password)
     vision_obj.connect_vision()
@@ -138,4 +137,4 @@ if __name__ == "__main__":
             break
 
         if choice == 3:
-            break
+            exit(0)
