@@ -104,9 +104,9 @@ def create_po_file():
     worksheet.write(0, 6, "icmpp")
     worksheet.write(0, 7, "totalm")
     worksheet.write(0, 8, "totalp")
-    
-    for row in range(1,len(po_name_list)):
-        worksheet.write(row, 0, po_name_list[row])
+    print(po_name_list)
+    for row in range(1,len(po_name_list)+1):
+        worksheet.write(row, 0, po_name_list[row-1])
     workbook.close()
 
     print("PO's Threshold file was created..")
