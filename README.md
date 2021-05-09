@@ -1,9 +1,17 @@
 # Updating List of PO's in DefenseFlow version 4.x
-The radware-ansible project provides an Ansible collection for managing and automating your Radware devices. It consists of a set of modules and roles for performing tasks related to Radware devices configuration.
+
+This script updates the thresholds of multiple PO's in DefenseFlow version 4.x and above using REST API.
+
+The script includes 2 main functions:
+
+1. Creating an Excel file which includes a table of the PO's that configured on the DefenseFlow
+by using REST API Calls.
+
+2. Updating all the PO's thresholds which configured in the DefenseFlow 
+
 
 ## Requirements 
 Python 3.8:
------------
   - Requests
   - Xlsxwriter
   - Pandas
@@ -11,36 +19,30 @@ Python 3.8:
 
 ## Installation
 ```
-# ansible-galaxy collection install radware.radware_modules
+# apt-get install python3.8
 ```
 
 ## Example Usage
-Once the collection is installed, you can use it in a playbook by specifying the full namespace path to the module, plugin and/or role.
 
-```
-- hosts: localhost
+Run the script and follow the Menu:
 
-  tasks:
-  - name: alteon configuration command
-    radware.radware_modules.alteon_config_l2_vlan:
-      provider: 
-        server: 192.168.1.1
-        user: admin
-        password: admin
-        validate_certs: no
-        https_port: 443
-        ssh_port: 22
-        timeout: 5
-      state: present
-      parameters:
-        index: 45
-        state: enabled
-        name: test_vlan
-        source_mac_learning: enabled
-        ports:
-          - 1
-          - 2
-```
+1.  Create New Po File
+2.  Update existing PO's From a file 
+3.  Exit
+
+Press 1, to create the Excel File (enter vision IP, user, pass), this function fetches all the PO’s names from the DefenseFlow
+And creates an Excel file called: PO_Thresholds_File.xls 
+
+Edit this file with the desired thresholds for each PO's
+
+**Any threshold field that should not be configured needs to be filled with 0 value**
+
+**Dont leave any empty cell in the PO's Excel file**
+
+Run the script again:
+Press 2 in order to apply the new thresholds configuration.
+
+**The script should run from the path where the file was created**
 
 ## Copyright
 
