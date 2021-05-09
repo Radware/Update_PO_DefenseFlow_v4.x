@@ -3,6 +3,7 @@ The radware-ansible project provides an Ansible collection for managing and auto
 
 ## Requirements 
 Python 3.8:
+-----------
   - Requests
   - Xlsxwriter
   - Pandas
